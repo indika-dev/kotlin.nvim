@@ -218,7 +218,13 @@ function M.setup_kotlin_lsp(opts)
         vim.log.levels.WARN
       )
     end
-    cmd = { intellij_server_path, "--stdio", "--system-path=" .. workspace_dir }
+    cmd = {
+      "LD_PRELOAD=/usr/lib64/libfaketime.so.1",
+      'FAKETIME="-15d"',
+      intellij_server_path,
+      "--stdio",
+      "--system-path=" .. workspace_dir,
+    }
   elseif has_legacy_launcher and opts.jre_path then
     -- Legacy layout, custom JRE: invoke java directly with JVM args parsed from the script.
     local java_bin = M.resolve_java_bin(opts.jre_path, is_windows)
