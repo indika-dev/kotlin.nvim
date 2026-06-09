@@ -219,8 +219,8 @@ function M.setup_kotlin_lsp(opts)
       )
     end
     cmd = {
-      "LD_PRELOAD=/usr/lib64/libfaketime.so.1",
-      'FAKETIME="-15d"',
+      "faketime",
+      "2026-06-04",
       intellij_server_path,
       "--stdio",
       "--system-path=" .. workspace_dir,
