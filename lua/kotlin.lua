@@ -219,7 +219,7 @@ function M.setup_kotlin_lsp(opts)
       )
     end
     cmd = {
-      "faketime",
+      "/usr/sbin/faketime",
       "2026-06-04",
       intellij_server_path,
       "--stdio",
